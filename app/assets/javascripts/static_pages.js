@@ -5,6 +5,25 @@ let toggle_all = true;
 const updateList = () => {
     indexTasks(function (response) {
       
+        // Use .filter first then .map
+//         var htmlString = response.filter(function(task) {
+//           if (toggle_all) {
+//               return true;
+//           }
+//           if (toggle_complete) {
+//               return task.completed;
+//           }
+//           if (toggle_active) {
+//               return !task.completed;
+//           }
+//         }).map(function(task) {
+//             return "<div class='col-8 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
+//                   " + task.content + "</div>" + "<div class='inline-block ml-4'><button class='btn btn-primary btn-sm remove' data-id='" + task.id + "'>Remove</button>" +
+//                   "<input type='checkbox' class='border-radius ml-3 check' data-id='" + task.id + "' " + (task.completed ? 'checked' : '') + " />" +
+//                   "</div>"
+//                   ;
+//         })
+        
         if (toggle_all) {
             var htmlString = response.tasks.map(function(task) {
                 return "<div class='col-8 mb-3 p-2 border rounded task' data-id='" + task.id + "'> \
